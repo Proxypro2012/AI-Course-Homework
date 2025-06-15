@@ -14,7 +14,7 @@ st.title("Age to salary scenario prediction")
 with st.container(border=True):
     users = st.multiselect("Users", INDIVIDUALS, default=INDIVIDUALS)
 
-tab1, tab2 = st.tabs(["Kabir", "Dataframe"])
+tab1, tab2 = st.tabs(["Chart", "Dataframe"])
 
 
 with tab1:
