@@ -22,6 +22,11 @@ class GetUserSynthesis():
             "His profits soared for the first few years, but then dipped down suddenly as he lost some of his user base." \
             "A new sofware update more geared towards the user experience of the application lead him to a steady and marginally " \
             "increasing income for the next few years"
+        elif self.user == "Sanjit":
+            return ""
+        elif self.user == "Nandini":
+            return ""
+
     
 
 
@@ -70,9 +75,9 @@ with tab1:
         st.altair_chart(chart, use_container_width=True)
 
         UserSynthesis = GetUserSynthesis(users=str(filtered_df['User'].unique()[0]))
-        
+
         st.markdown(
-            f"### User Synthesis for Kabir:\n{UserSynthesis.get_users()}"
+            f"### User Synthesis for {UserSynthesis.get_users()}:\n{UserSynthesis.get_users()}"
         )
 
 with tab2:
