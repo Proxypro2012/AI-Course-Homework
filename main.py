@@ -8,8 +8,7 @@ INDIVIDUALS = [
     "Nandini"
 ]
 
-
-st.title("Age to salary scenario prediction")
+st.title("Age to Salary Scenario Prediction")
 
 with st.container(border=True):
     users = st.multiselect("Users", INDIVIDUALS, default=INDIVIDUALS)
@@ -17,37 +16,39 @@ with st.container(border=True):
 tab1, tab2 = st.tabs(["Chart", "Dataframe"])
 
 
-with tab1:
-    # Load the CSV data into a DataFrame
-    try:
-        df_chart = pd.read_csv("salary_data.csv")
-    except FileNotFoundError:
-        df_chart = pd.DataFrame({
-            "Age": [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30],
-            "Salary": [10000, 15000, 25000, 30000, 50000, 60000, 70000, 80000, 90000, 100000, 120000]
-        })
+try:
+    df = pd.read_csv("salary_data.csv")
+except FileNotFoundError:
+    df = pd.DataFrame({
+        "User": ["Kabir", "Sanjit", "Nandini"],
+        "Age": [21, 22, 23],
+        "Salary": [39343, 46205, 37731]
+    })
 
-    chart = st.line_chart(
-        data=df_chart,
+
+df["Age"] = df["Age"].round().astype(int)
+
+
+filtered_df = df[df["User"].isin(users)]
+
+with tab1:
+    st.line_chart(
+        data=filtered_df,
         x="Age",
         y="Salary",
         use_container_width=True,
-        height=300,
-        width=500,
+        height=300
     )
 
 with tab2:
     kagglehub.dataset_download("codebreaker619/salary-data-with-age-and-experience")
-    df = pd.read_csv("salary_data.csv")
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(filtered_df, use_container_width=True)
 
     st.download_button(
-        label="Download Data",
-        data=df.to_csv(index=False),
-        file_name="salary_data.csv",
+        label="Download Filtered Data",
+        data=filtered_df.to_csv(index=False),
+        file_name="filtered_salary_data.csv",
         mime="text/csv"
     )
 
     st.write("Data Source: [KaggleHub](https://www.kaggle.com/datasets/codebreaker619/salary-data-with-age-and-experience/data)")
-
-
