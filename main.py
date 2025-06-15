@@ -37,7 +37,7 @@ with tab1:
     )
 
 with tab2:
-    df = kagglehub.load_dataset("codebreaker619/salary-data-with-age-and-experience", path="salary_data.csv", handle="pandas")
+    df = kagglehub.load_dataset("codebreaker619/salary-data-with-age-and-experience", path="salary_data.csv")
     st.dataframe(df, use_container_width=True)
 
     st.download_button(
@@ -47,6 +47,6 @@ with tab2:
         mime="text/csv"
     )
 
-    st.write("Data Source: [KaggleHub](https://www.kaggle.com/datasets/codebreaker619/salary-data-with-age-and-experience/data")
+    st.write("Data Source: [KaggleHub](https://www.kaggle.com/datasets/codebreaker619/salary-data-with-age-and-experience/data)")
 
 
