@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import kagglehub
+import altair as alt
 
 INDIVIDUALS = [
     "Kabir",
