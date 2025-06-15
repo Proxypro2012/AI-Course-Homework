@@ -77,7 +77,7 @@ with tab1:
         UserSynthesis = GetUserSynthesis(users=str(filtered_df['User'].unique()[0]))
 
         st.markdown(
-            f"### User Synthesis for {UserSynthesis.get_users()}:\n{UserSynthesis.get_users()}"
+            f"### User Synthesis for {UserSynthesis.user.capitalize()}:\n{UserSynthesis.get_users()}"
         )
 
 with tab2:
