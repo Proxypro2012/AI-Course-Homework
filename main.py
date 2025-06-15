@@ -16,9 +16,12 @@ with st.container(border=True):
 
 tab1, tab2 = st.tabs(["Chart", "Dataframe"])
 
+# Ensure dataset is downloaded before loading CSV
+kagglehub.dataset_download("codebreaker619/salary-data-with-age-and-experience")
 
 try:
     df = pd.read_csv("salary_data.csv")
+    all_users = df["User"].unique().tolist()
 except FileNotFoundError:
     df = pd.DataFrame({
         "User": ["Kabir", "Sanjit", "Nandini"],
@@ -26,23 +29,27 @@ except FileNotFoundError:
         "Salary": [39343, 46205, 37731]
     })
 
-
 df["Age"] = df["Age"].round().astype(int)
-
 
 filtered_df = df[df["User"].isin(users)]
 
 with tab1:
-    st.line_chart(
-        data=filtered_df,
-        x="Age",
-        y="Salary",
-        use_container_width=True,
-        height=300
-    )
+    if filtered_df.empty:
+        st.info("No data to display. Please select at least one user.")
+    else:
+        chart = alt.Chart(filtered_df).mark_line(point=True).encode(
+            x=alt.X('Age:Q', title='Age'),
+            y=alt.Y('Salary:Q', title='Salary'),
+            color=alt.Color('User:N', title='User'),
+            tooltip=['User', 'Age', 'Salary']
+        ).properties(
+            width='container',
+            height=400,
+            title="Age vs Salary by User"
+        )
+        st.altair_chart(chart, use_container_width=True)
 
 with tab2:
-    kagglehub.dataset_download("codebreaker619/salary-data-with-age-and-experience")
     st.dataframe(filtered_df, use_container_width=True)
 
     st.download_button(
