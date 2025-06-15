@@ -69,7 +69,8 @@ with tab1:
         )
         st.altair_chart(chart, use_container_width=True)
 
-        UserSynthesis = GetUserSynthesis(users="Kabir")
+        UserSynthesis = GetUserSynthesis(users=str(filtered_df['User'].unique()[0]))
+        
         st.markdown(
             f"### User Synthesis for Kabir:\n{UserSynthesis.get_users()}"
         )
