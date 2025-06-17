@@ -56,6 +56,7 @@ except FileNotFoundError:
 
 df["Age"] = df["Age"].round().astype(int)
 
+
 filtered_df = df[df["User"].isin(users)]
 
 with tab1:
@@ -74,11 +75,12 @@ with tab1:
         )
         st.altair_chart(chart, use_container_width=True)
 
-        UserSynthesis = GetUserSynthesis(users=str(filtered_df['User'].unique()[0]))
+        for user in users:
+            UserSynthesis = GetUserSynthesis(users=str(filtered_df['User'].unique()[0]))
 
-        st.markdown(
-            f"### User Synthesis for {UserSynthesis.user.capitalize()}:\n{UserSynthesis.get_users()}"
-        )
+            st.markdown(
+                f"### User Synthesis for {UserSynthesis.user.capitalize()}:\n{UserSynthesis.get_users()}"
+            )
 
 with tab2:
     st.dataframe(filtered_df, use_container_width=True)
