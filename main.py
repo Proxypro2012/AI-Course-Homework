@@ -23,9 +23,13 @@ class GetUserSynthesis():
             "A new sofware update more geared towards the user experience of the application lead him to a steady and marginally " \
             "increasing income for the next few years"
         elif self.user == "Sanjit":
-            return ""
+            return "Sanjt created an application that solved a real worl issue. His profits soared from the age of 22" \
+            " to the age of 23, then suddenly decreased. Sanjit got investors to invest in his application, and his income " \
+            "started to steadily increae again."
         elif self.user == "Nandini":
-            return ""
+            return "Nandini created an application that solved a real world problem, and profits soared. Then, sales started to go" \
+            " down as her user base lost intereset, so she sold her app for a yearly income to some company and her profits marginally" \
+            " increased over time."
 
     
 
