@@ -76,6 +76,11 @@ with tab1:
         st.altair_chart(chart, use_container_width=True)
 
         for user in users:
+            if user not in filtered_df['User'].unique():
+                st.warning(f"No data available for {user}.")
+                continue
+            
+
             UserSynthesis = GetUserSynthesis(users=str(filtered_df['User'].unique()[0]))
 
             st.markdown(
