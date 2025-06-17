@@ -79,13 +79,13 @@ with tab1:
             if user not in filtered_df['User'].unique():
                 st.warning(f"No data available for {user}.")
                 continue
-            
 
-            UserSynthesis = GetUserSynthesis(users=str(filtered_df['User'].unique()[0]))
+            user_synthesis = GetUserSynthesis(users=user)
 
             st.markdown(
-                f"### User Synthesis for {UserSynthesis.user.capitalize()}:\n{UserSynthesis.get_users()}"
+                f"### User Synthesis for {user}:\n{user_synthesis.get_users()}"
             )
+
 
 with tab2:
     st.dataframe(filtered_df, use_container_width=True)
