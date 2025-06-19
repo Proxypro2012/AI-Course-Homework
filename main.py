@@ -81,12 +81,14 @@ with tab1:
 
         st.markdown("## User Syntheses")
 
+        st.latex(r"f(x) = y")
+
         for user in users:
             user_synthesis = GetUserSynthesis(users=user)
             st.markdown(f"### {user}")
             st.write(user_synthesis.get_users())
 
-        st.latex(r"f(x) = y")
+        
 
 
 
