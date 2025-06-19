@@ -79,9 +79,10 @@ with tab1:
         )
         st.altair_chart(chart, use_container_width=True)
 
+        st.latex(r"f(x) = y")
+
         st.markdown("## User Syntheses")
 
-        st.latex(r"f(x) = y")
 
         for user in users:
             user_synthesis = GetUserSynthesis(users=user)
