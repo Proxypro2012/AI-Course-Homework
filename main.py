@@ -13,7 +13,6 @@ INDIVIDUALS = [
 class GetUserSynthesis():
     def __init__(self, users):
         self.user = users
-
     def get_users(self):
         if self.user not in INDIVIDUALS:
             raise ValueError(f"User {self.user} is not in the list of individuals: {INDIVIDUALS}")
@@ -86,6 +85,8 @@ with tab1:
             user_synthesis = GetUserSynthesis(users=user)
             st.markdown(f"### {user}")
             st.write(user_synthesis.get_users())
+
+        st.latex(r"f(x) = y")
 
 
 
